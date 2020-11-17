@@ -8,7 +8,7 @@
 				<div class="card-header">
 					Data User
 					<div class="card-body">
-						<form action="{{ url('user') }}" method="post">
+						<form action="{{ url('admin/user') }}" method="post">
 							@csrf
 
 						<div class="form-group">

@@ -8,20 +8,20 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 
-                    <li class="{{checkRouteActive('beranda')}}">
-                        <a href="{{ url('/beranda') }}"><i class="fa fa-dashboard"></i> Beranda </a>
+                    <li class="{{checkRouteActive('admin/beranda')}}">
+                        <a href="{{ url('admin/beranda') }}"><i class="fa fa-dashboard"></i> Beranda </a>
                     </li>
 
-                     <li class="{{checkRouteActive('adm_kategori')}}">
-                        <a href="{{ url('/adm_kategori') }}"><i class="fa fa-edit"></i> Kategori </a>
+                     <li class="{{checkRouteActive('admin/adm_kategori')}}">
+                        <a href="{{ url('admin/adm_kategori') }}"><i class="fa fa-edit"></i> Kategori </a>
                     </li>
 
-                    <li class="{{checkRouteActive('adm_produk')}}">
-                        <a href="{{ url('/adm_produk') }}"><i class="fa fa-edit"></i> Produk </a>
+                    <li class="{{checkRouteActive('admin/adm_produk')}}">
+                        <a href="{{ url('admin/adm_produk') }}"><i class="fa fa-edit"></i> Produk </a>
                     </li>
 
-                     <li class="{{checkRouteActive('adm_promo')}}">
-                        <a href="{{ url('/user') }}"><i class="fa fa-edit"></i> User </a>
+                     <li class="{{checkRouteActive('admin/login_adm')}}">
+                        <a href="{{ url('admin/user') }}"><i class="fa fa-edit"></i> User </a>
                     </li>
 
                     <li class="{{checkRouteActive('#')}}">

@@ -1,13 +1,15 @@
 <?php 
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 
 class homecontroller extends Controller
 {
+	
 	function showBeranda(){
 		return view('beranda');
 	}
+
 
 	function showAdm_kategori(){
 		return view('adm_kategori');

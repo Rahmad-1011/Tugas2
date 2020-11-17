@@ -36,39 +36,18 @@ Route::get('/register', function () {
 	return view('register');
 });
 
-//produk
-Route::get('/beranda', [homecontroller::class, 'showBeranda']);
 
-Route::get('/adm_kategori', [homecontroller::class, 'showAdm_kategori']);
- 
-Route::get('/adm_produk', [produkcontroller::class, 'index']);
+Route::prefix('admin')->group(function(){
+	//beranda
+	Route::get('/beranda', [homecontroller::class, 'showBeranda']);
+	//kategori
+	Route::get('/adm_kategori', [homecontroller::class, 'showAdm_kategori']);
+	//produk
+	Route::resource('adm_produk', produkcontroller::class);
+	//user 
+	Route::resource('user', usercontroller::class);
+});
 
-Route::get('/adm_produk/create', [produkcontroller::class, 'create']);
-
-Route::post('/adm_produk', [produkcontroller::class, 'store']);
-
-Route::get('/adm_produk/{produk}', [produkcontroller:: class, 'show']);
-
-Route::get('/adm_produk/{produk}/edit', [produkcontroller:: class, 'edit']);
-
-Route::put('/adm_produk/{produk}', [produkcontroller:: class, 'update']);
-
-Route::delete('/adm_produk/{produk}', [produkcontroller:: class, 'destroy']);
-
-//user 
-Route::get('/user', [usercontroller::class, 'index']);
-
-Route::get('/user/create', [usercontroller::class, 'create']);
-
-Route::post('/user', [usercontroller::class, 'store']);
-
-Route::get('/user/{user}', [usercontroller:: class, 'show']);
-
-Route::get('/user/{user}/edit', [usercontroller:: class, 'edit']);
-
-Route::put('/user/{user}', [usercontroller:: class, 'update']);
-
-Route::delete('/user/{user}', [usercontroller:: class, 'destroy']);
 
 
 
@@ -77,12 +56,15 @@ Route::get('/adm_promo', [homecontroller::class, 'showAdm_promo']);
 
 //Login_admin
 
-Route::get('/login_adm', [authcontroller::class, 'showLogin']);
+Route::get('/login_adm', [authcontroller::class, 'showLogin'])->name('login');
 
 Route::post('/login_adm', [authcontroller::class, 'LoginProcess']);
 
-Route::get('/register_adm', [authcontroller::class, 'Register']);
+Route::get('/register_adm', [authcontroller::class, 'create']);
 
+Route::post('/register_adm', [authcontroller::class, 'Register']);
+
+Route::get('/logout_adm', [authcontroller::class, 'destory']);
 
 Route::get('/masteradmin', function () 
 {

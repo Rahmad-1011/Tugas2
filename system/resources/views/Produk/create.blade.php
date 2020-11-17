@@ -8,7 +8,7 @@
 				<div class="card-header">
 					Data Produk
 				<div class="card-body">
-					<form action="{{ url('adm_produk') }}" method="post">
+					<form action="{{ url('admin/adm_produk') }}" method="post">
 						@csrf
 
 					<div class="form-group">

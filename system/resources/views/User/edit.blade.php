@@ -8,10 +8,10 @@
 				<div class="card-header">
 					Edit Data User
 				<div class="card-body">
-					<form action="{{ url('user', $user->id) }}" method="post">
+					<form action="{{ url('admin/user', $user->id) }}" method="post">
 						@csrf
 					@method("PUT")
-					<form action="{{ url('user') }}" method="post">
+					<form action="{{ url('admin/user') }}" method="post">
 							@csrf
 
 						<div class="form-group">

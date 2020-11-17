@@ -22,7 +22,7 @@
 		<link type="text/css" rel="stylesheet" href="{{url('/public')}}/cssweb/css/nouislider.min.css"/>
 
 		<!-- Font Awesome Icon -->
-		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="{{url('/public')}}/cssweb/css/font-awesome.min.css">
 
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="{{url('/public')}}/cssweb/css/style.css"/>
@@ -54,7 +54,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop01.png" alt="">
+								<img src="{{url('/public')}}/img/shop01.png" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Koleksi<br>Laptop</h3>
@@ -68,7 +68,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop03.png" alt="">
+								<img src="{{url('/public')}}/img/shop03.png" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Koleksi<br>Aksesoris</h3>
@@ -82,7 +82,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop02.png" alt="">
+								<img src="{{url('/public')}}/img/shop02.png" alt="">
 							</div>
 							<div class="shop-body">
 								<h3>Koleksi<br>Kamera</h3>

@@ -11,7 +11,7 @@
 					Data Produk
 					</h2>
 					<hr>
-					<a href="{{ url('/adm_produk/create') }}">
+					<a href="{{ url('admin/adm_produk/create') }}">
 					<button class="btn btn-primary"> Tambah Data
 					</button></a>
 				</div>
@@ -31,11 +31,11 @@
 								<td>
 									<div class="btn btn-group">
 
-										<a href="{{ url('adm_produk', $produk->id) }}" class="btn btn-primary"><i class="fa fa-info"></i></a>
+										<a href="{{ url('admin/adm_produk', $produk->id) }}" class="btn btn-primary"><i class="fa fa-info"></i></a>
 
-										<a href="{{ url('adm_produk', $produk->id) }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+										<a href="{{ url('admin/adm_produk', $produk->id) }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
 
-										@include ('template.utils.delete', ['url' => url('adm_produk', $produk->id)])
+										@include ('template.utils.delete', ['url' => url('admin/adm_produk', $produk->id)])
 									</div>	
 
 								</td>
