@@ -7,19 +7,36 @@
 		<div class="col-md-12 mt-5">
 			<div class="card">
 				<div class="card-header">
-					<h2>
+					Filter
+				</div>
+				<div class="card-body">
+					<form action="{{url('admin/adm_produk/filter')}}" method="post">
+						@csrf
+						<div class="form-group">
+							<label for="" class="control-label"> Kategori </label>
+							<input type="text" class="form-control" name="kategori" value="{{$kategori ?? ""}}">
+						</div>
+						<button class="btn btn-primary"><i class="fa fa-search"></i>Filter</button>
+					</form>
+				</div>
+			</div>
+			<hr>
+			<div class="card">
+				<div class="card-header">
+					<h3>
 					Data Produk
-					</h2>
+					</h3>
 					<hr>
 					<a href="{{ url('admin/adm_produk/create') }}">
 					<button class="btn btn-primary"> Tambah Data
 					</button></a>
 				</div>
 				<div class="card-body">
-					<table class="table">
+					<table class="table table-datatable">
 						<thead>
 							<th> No </th>
 							<th width="250px"> Aksi </th>
+							<th> Kategori </th>
 							<th> Nama </th>
 							<th> Harga </th>
 							<th> Stok </th>
@@ -39,6 +56,7 @@
 									</div>	
 
 								</td>
+								<td>{{$produk->kategori}}</td>
 								<td>{{$produk->nama}}</td>
 								<td>{{$produk->harga}}</td>
 								<td>{{$produk->stok}}</td>

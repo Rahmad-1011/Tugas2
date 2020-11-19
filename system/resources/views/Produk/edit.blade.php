@@ -7,13 +7,19 @@
 			<div class="card">
 				<div class="card-header">
 					Edit Data Produk
+				</div>
 				<div class="card-body">
 					<form action="{{ url('admin/adm_produk', $produk->id) }}" method="post">
 						@csrf
 					@method("PUT")
+
 					<div class="form-group">
 						<label for="" class="control-label"> Nama </label>
-						<input type="text" class="form-control" name="nama" value="{{$produk->nama}}">
+						<input type="text" class="form-control" value="{{$produk->nama}}" name="nama">
+					</div>
+					<div class="form-group">
+						<label for="" class="control-label"> Kategori </label>
+						<input type="text" class="form-control" value="{{$produk->kategori}}" name="kategori">
 					</div>
 				</div>
 				<div class="row">
@@ -21,7 +27,7 @@
 						<div class="card-body">
 							<div class="form-group">	
 								<label for="" class="control-label"> Harga </label>
-								<input type="text" class="form-control" name="harga" value="{{$produk->harga}}">
+								<input type="text" class="form-control" value="{{$produk->harga}}" name="harga">
 							</div>
 						</div>
 					</div>
@@ -29,7 +35,7 @@
 						<div class="card-body">
 							<div class="form-group">
 								<label for="" class="control-label"> Berat </label>
-								<input type="text" class="form-control" name="berat" value="{{$produk->berat}}">
+								<input type="text" class="form-control" value="{{$produk->berat}}" name="berat">
 							</div>
 						</div>
 					</div>
@@ -37,7 +43,7 @@
 						<div class="card-body">
 							<div class="form-group">
 								<label for="" class="control-label"> Stok </label>
-								<input type="text" class="form-control" name="stok" value="{{$produk->stok}}">
+								<input type="text" class="form-control" value="{{$produk->stok}}" name="stok">
 							</div>
 						</div>
 					</div>
@@ -50,7 +56,6 @@
 				</div>
 				
 				<button class="btn btn-primary float-right"><i class="fa fa-save"> Simpan </i></button>
-
 					</form>
 				</div>
 			</div>

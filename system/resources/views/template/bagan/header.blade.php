@@ -33,8 +33,10 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-6">
 							<div class="header-search">
-								<form>
-									<input class="input" placeholder="Cari disini">
+								<form action="{{url('home/filter')}}" method="post">
+									@csrf
+									<input class="input" type="text" placeholder="Cari disini"
+									 name="kategori">
 									<button class="search-btn">Cari</button>
 								</form>
 							</div>

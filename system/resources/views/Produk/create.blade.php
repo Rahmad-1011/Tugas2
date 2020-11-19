@@ -15,6 +15,10 @@
 						<label for="" class="control-label"> Nama </label>
 						<input type="text" class="form-control" name="nama">
 					</div>
+					<div class="form-group">
+						<label for="" class="control-label"> Kategori </label>
+						<input type="text" class="form-control" name="kategori">
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-6">

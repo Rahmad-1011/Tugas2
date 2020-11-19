@@ -17,6 +17,7 @@ class produkcontroller extends Controller {
 	function store(){
 		$produk = new produk;
 		$produk-> nama = request('nama');
+		$produk-> kategori = request('kategori');
 		$produk-> harga = request('harga');
 		$produk-> berat = request('berat');
 		$produk-> stok = request('stok');
@@ -40,6 +41,7 @@ class produkcontroller extends Controller {
 
 	function update(Produk $produk){
 		$produk-> nama = request('nama');
+		$produk-> kategori = request('kategori');
 		$produk-> harga = request('harga');
 		$produk-> berat = request('berat');
 		$produk-> stok = request('stok');
@@ -55,5 +57,12 @@ class produkcontroller extends Controller {
 
 		return redirect ('admin/adm_produk')-> with ('danger', 'Data berhasil dihapus');
 
+	}
+
+	function filter(){
+		$kategori = request ('kategori');
+		$data['list_produk'] = Produk::where('kategori', 'like', "%$kategori%")-> get();
+		$data['kategori'] = $kategori;
+		return view('Produk.index', $data);
 	}
 }

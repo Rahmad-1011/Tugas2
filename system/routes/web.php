@@ -25,6 +25,7 @@ Route::get('/login', function () {
 });
 
 Route::get('/home', [clientcontroller::class, 'home']);
+Route::post('/home/filter', [clientcontroller::class, 'filter']);
 
 Route::get('product/{produk}', [clientcontroller::class, 'show']);
 
@@ -41,9 +42,10 @@ Route::prefix('admin')->group(function(){
 	//beranda
 	Route::get('/beranda', [homecontroller::class, 'showBeranda']);
 	//kategori
-	Route::get('/adm_kategori', [homecontroller::class, 'showAdm_kategori']);
+	Route::get('/adm_kategori', [kategoricontroller::class, 'kategori']);
 	//produk
 	Route::resource('adm_produk', produkcontroller::class);
+	Route::post('adm_produk/filter', [produkcontroller::class, 'filter']);
 	//user 
 	Route::resource('user', usercontroller::class);
 });

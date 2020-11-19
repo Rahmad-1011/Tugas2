@@ -108,14 +108,6 @@
 					<div class="col-md-12">
 						<div class="section-title">
 							<h3 class="title">Produk Baru</h3>
-							<div class="section-nav">
-								<ul class="section-tab-nav tab-nav">
-									<li class="active"><a data-toggle="tab" href="#tab1">Laptop</a></li>
-									<li><a data-toggle="tab" href="#tab1">Smartphone</a></li>
-									<li><a data-toggle="tab" href="#tab1">Kamera</a></li>
-									<li><a data-toggle="tab" href="#tab1">Aksesoris</a></li>
-								</ul>
-							</div>
 						</div>
 					</div>
 					<!-- /section title -->
@@ -137,8 +129,8 @@
 												</div>
 											</div>
 											<div class="product-body">
-												<p class="product-category">Laptop</p>
-												<h3 class="product-name"><a href="{{ url('product', $produk->id) }}">{{ $produk->nama }}</a></h3>
+												<p class="product-category"><a href="{{url('product', $produk->id)}}">{{ $produk->kategori }}</a></p>
+												<h3 class="product-name"><a href="{{url('product', $produk->id)}}">{{ $produk->nama }}</a></h3>
 												<h4 class="product-price"> Rp. {{ number_format($produk->harga) }}</h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
