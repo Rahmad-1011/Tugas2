@@ -9,24 +9,7 @@
 		<title>TokoKite</title>
 
 		<!-- Google font -->
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-
-		<!-- Bootstrap -->
-		<link type="text/css" rel="stylesheet" href="{{url('/public')}}/cssweb/css/bootstrap.min.css"/>
-
-		<!-- Slick -->
-		<link type="text/css" rel="stylesheet" href="{{url('/public')}}/cssweb/css/slick.css"/>
-		<link type="text/css" rel="stylesheet" href="{{url('/public')}}/cssweb/css/slick-theme.css"/>
-
-		<!-- nouislider -->
-		<link type="text/css" rel="stylesheet" href="{{url('/public')}}/cssweb/css/nouislider.min.css"/>
-
-		<!-- Font Awesome Icon -->
-		<link rel="stylesheet" href="{{url('/public')}}/cssweb/css/font-awesome.min.css">
-
-		<!-- Custom stlylesheet -->
-		<link type="text/css" rel="stylesheet" href="{{url('/public')}}/cssweb/css/style.css"/>
-
+		@include('template.bagan.css')
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -51,7 +34,37 @@
 				<!-- row -->
 				<div class="row">
 					<!-- shop -->
-					<div class="col-md-4 col-xs-6">
+					<div class="col-md-3">
+						<form action="{{url('home/filter')}}" method="post">
+						@csrf
+						<div class="form-group">
+							<label for="" class="control-label"> Kategori </label>
+							<select name="id_kategori" class="form-control">
+							@foreach($list_kategori as $kategori)
+								<option value="{{$kategori->id}}">{{$kategori->nama}}</option>
+							@endforeach
+							</select>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="" class="control-label"> Harga Min </label>
+									<input type="text" class="form-control" name="harga_min" value="{{$harga_min ?? ""}}">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="" class="control-label"> Harga Max </label>
+									<input type="text" class="form-control" name="harga_max" value="{{$harga_max ?? ""}}">
+								</div>
+							</div>
+						</div>
+						<button class="btn btn-primary"><i class="fa fa-search"></i>Filter</button>
+						</form>
+					</div>
+					
+					<div class="col-md-9">
+						<div class="col-md-4 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
 								<img src="{{url('/public')}}/img/shop01.png" alt="">
@@ -90,6 +103,8 @@
 							</div>
 						</div>
 					</div>
+					</div>
+					
 					<!-- /shop -->
 				</div>
 				<!-- /row -->
@@ -129,7 +144,7 @@
 												</div>
 											</div>
 											<div class="product-body">
-												<p class="product-category"><a href="{{url('product', $produk->id)}}">{{ $produk->kategori }}</a></p>
+												<p class="product-category"><a href="{{url('product', $produk->id)}}">{{ $produk->kategori->nama }}</a></p>
 												<h3 class="product-name"><a href="{{url('product', $produk->id)}}">{{ $produk->nama }}</a></h3>
 												<h4 class="product-price"> Rp. {{ number_format($produk->harga) }}</h4>
 												<div class="product-rating">
@@ -171,12 +186,7 @@
 		<!-- /FOOTER -->
 
 		<!-- jQuery Plugins -->
-		<script src="{{url('/public')}}/cssweb/js/jquery.min.js"></script>
-		<script src="{{url('/public')}}/cssweb/js/bootstrap.min.js"></script>
-		<script src="{{url('/public')}}/cssweb/js/slick.min.js"></script>
-		<script src="{{url('/public')}}/cssweb/js/nouislider.min.js"></script>
-		<script src="{{url('/public')}}/cssweb/js/jquery.zoom.min.js"></script>
-		<script src="{{url('/public')}}/cssweb/js/main.js"></script>
+		@include('template.bagan.js')
 
 	</body>
 </html>

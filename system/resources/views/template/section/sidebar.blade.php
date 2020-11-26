@@ -12,15 +12,15 @@
                         <a href="{{ url('admin/beranda') }}"><i class="fa fa-dashboard"></i> Beranda </a>
                     </li>
 
-                     <li class="{{checkRouteActive('admin/adm_kategori')}}">
-                        <a href="{{ url('admin/adm_kategori') }}"><i class="fa fa-edit"></i> Kategori </a>
+                     <li class="{{checkRouteActive('admin/kategori')}}">
+                        <a href="{{ url('admin/kategori') }}"><i class="fa fa-edit"></i> Kategori </a>
                     </li>
 
-                    <li class="{{checkRouteActive('admin/adm_produk')}}">
-                        <a href="{{ url('admin/adm_produk') }}"><i class="fa fa-edit"></i> Produk </a>
+                    <li class="{{checkRouteActive('admin/produk')}}">
+                        <a href="{{ url('admin/produk') }}"><i class="fa fa-edit"></i> Produk </a>
                     </li>
 
-                     <li class="{{checkRouteActive('admin/login_adm')}}">
+                    <li class="{{checkRouteActive('admin/login_adm')}}">
                         <a href="{{ url('admin/user') }}"><i class="fa fa-edit"></i> User </a>
                     </li>
 

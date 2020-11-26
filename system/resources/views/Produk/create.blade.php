@@ -7,8 +7,9 @@
 			<div class="card">
 				<div class="card-header">
 					Data Produk
+				</div>
 				<div class="card-body">
-					<form action="{{ url('admin/adm_produk') }}" method="post">
+					<form action="{{ url('admin/produk') }}" method="post">
 						@csrf
 
 					<div class="form-group">
@@ -17,7 +18,11 @@
 					</div>
 					<div class="form-group">
 						<label for="" class="control-label"> Kategori </label>
-						<input type="text" class="form-control" name="kategori">
+						<select name="id_kategori" class="form-control">
+							@foreach($list_kategori as $kategori)
+								<option value="{{$kategori->id}}">{{$kategori->nama}}</option>
+							@endforeach
+						</select>
 					</div>
 				</div>
 				<div class="row">
@@ -53,7 +58,7 @@
 					</div>
 				</div>
 				
-				<button class="btn btn-primary float-right"><i class="fa fa-save"> Simpan </i></button>
+				<button type="submit" class="btn btn-primary float-right"><i class="fa fa-save"> Simpan </i></button>
 
 					</form>
 				</div>

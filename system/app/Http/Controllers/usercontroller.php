@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\UserDetail;
 
 class usercontroller extends Controller {
 	function index(){
-		$data['list_user'] = User::all();
+		$data['list_user'] = User::withCount('produk')->get();
 		return view('User.index', $data);
 	}
 
@@ -21,6 +22,11 @@ class usercontroller extends Controller {
 		$user-> email = request('email');
 		$user-> password = bcrypt(request('password'));
 		$user-> save();
+
+		$userdetail = new UserDetail;
+		$userdetail-> id_user = $user->id;
+		$userdetail-> no_hp = request('no_hp');
+		$userdetail->save();
 
 		return redirect ('admin/user')-> with ('success', 'Data berhasil ditambahkan');
 
@@ -44,6 +50,11 @@ class usercontroller extends Controller {
 		$user-> email = request('email');
 		if(request('password')) $user-> password = bcrypt(request('password'));
 		$user-> save();
+
+		$userdetail = new UserDetail;
+		$userdetail-> id_user = $user->id;
+		$userdetail-> no_hp = request('no_hp');
+		$userdetail->save();
 
 		return redirect ('admin/user')-> with ('success', 'Data berhasil diedit');
 

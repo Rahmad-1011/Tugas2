@@ -11,10 +11,13 @@
 					<h2>{{$user -> nama}}</h2>
 					<hr>
 					<p>
-						{{"@".$user-> username}}  |	
-					</p>
-					<p>
-						Email : {{$user-> email}}  |
+						{{"@".$user-> username}} |
+					
+				
+						Email : {{$user-> email}} |
+					
+				
+						Nomor HP : {{$user->detail->no_hp}}  
 					</p>
 					
 				</div>

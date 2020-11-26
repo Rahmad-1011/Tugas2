@@ -12,14 +12,18 @@
 					<hr>
 					<p>
 						Rp. {{number_format($produk->harga)}}  |	
-					</p>
-					<p>
+					
+				
 						Stok : {{($produk->stok)}}  |
-					</p>
-					<p>
+					
+				
 						Berat : {{($produk->berat)}}  |
-					</p>
-					<p>
+
+						Seller : {{($produk->seller->nama)}}  |
+
+						Kategori : {{($produk->kategori->nama)}}  |
+						<hr>
+				
 						{!! nl2br ($produk->deskripsi) !!}
 					</p>
 				</div>

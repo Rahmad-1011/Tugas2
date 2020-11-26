@@ -8,7 +8,7 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> Ketapang, Kalimantan Barat</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href="{{ url('/logout_adm') }}"><i class="fa fa-user-o"></i>Log Out</a></li>
+						<li><a href="{{ url('/logout_adm') }}"><i class="fa fa-user"></i>Log Out</a></li>
 					</ul>
 				</div>
 			</div>

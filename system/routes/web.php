@@ -6,6 +6,7 @@ use App\Http\Controllers\authcontroller;
 use App\Http\Controllers\produkcontroller;
 use App\Http\Controllers\clientcontroller;
 use App\Http\Controllers\usercontroller;
+use App\Http\Controllers\kategoricontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,8 @@ Route::get('/login', function () {
 	return view('login');
 });
 
-Route::get('/home', [clientcontroller::class, 'home']);
-Route::post('/home/filter', [clientcontroller::class, 'filter']);
+Route::get('home', [clientcontroller::class, 'home']);
+Route::post('home/filter', [clientcontroller::class, 'filter']);
 
 Route::get('product/{produk}', [clientcontroller::class, 'show']);
 
@@ -40,12 +41,12 @@ Route::get('/register', function () {
 
 Route::prefix('admin')->group(function(){
 	//beranda
-	Route::get('/beranda', [homecontroller::class, 'showBeranda']);
+	Route::get('beranda', [homecontroller::class, 'showBeranda']);
 	//kategori
-	Route::get('/adm_kategori', [kategoricontroller::class, 'kategori']);
+	Route::resource('kategori', kategoricontroller::class);
 	//produk
-	Route::resource('adm_produk', produkcontroller::class);
-	Route::post('adm_produk/filter', [produkcontroller::class, 'filter']);
+	Route::resource('produk', produkcontroller::class);
+	Route::post('produk/filter', [produkcontroller::class, 'filter']);
 	//user 
 	Route::resource('user', usercontroller::class);
 });

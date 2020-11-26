@@ -26,6 +26,10 @@
 							<input type="email" class="form-control" name="email" value="{{$user->email}}">
 						</div>
 						<div class="form-group">
+							<label for="" class="control-label"> Nomor HP </label>
+							<input type="text" class="form-control" name="no_hp">
+						</div>
+						<div class="form-group">
 							<label for="" class="control-label"> Password </label>
 							<input type="password" class="form-control" name="password">
 						</div>

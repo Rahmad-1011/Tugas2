@@ -10,11 +10,29 @@
 					Filter
 				</div>
 				<div class="card-body">
-					<form action="{{url('admin/adm_produk/filter')}}" method="post">
+					<form action="{{url('admin/produk/filter')}}" method="post">
 						@csrf
 						<div class="form-group">
 							<label for="" class="control-label"> Kategori </label>
-							<input type="text" class="form-control" name="kategori" value="{{$kategori ?? ""}}">
+							<select name="id_kategori" class="form-control">
+							@foreach($list_kategori as $kategori)
+								<option value="{{$kategori->id}}">{{$kategori->nama}}</option>
+							@endforeach
+							</select>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="" class="control-label"> Harga Min </label>
+									<input type="text" class="form-control" name="harga_min" value="{{$harga_min ?? ""}}">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="" class="control-label"> Harga Max </label>
+									<input type="text" class="form-control" name="harga_max" value="{{$harga_max ?? ""}}">
+								</div>
+							</div>
 						</div>
 						<button class="btn btn-primary"><i class="fa fa-search"></i>Filter</button>
 					</form>
@@ -27,7 +45,7 @@
 					Data Produk
 					</h3>
 					<hr>
-					<a href="{{ url('admin/adm_produk/create') }}">
+					<a href="{{ url('admin/produk/create') }}">
 					<button class="btn btn-primary"> Tambah Data
 					</button></a>
 				</div>
@@ -48,15 +66,15 @@
 								<td>
 									<div class="btn btn-group">
 
-										<a href="{{ url('admin/adm_produk', $produk->id) }}" class="btn btn-primary"><i class="fa fa-info"></i></a>
+										<a href="{{ url('admin/produk', $produk->id) }}" class="btn btn-primary"><i class="fa fa-info"></i></a>
 
-										<a href="{{ url('admin/adm_produk', $produk->id) }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+										<a href="{{ url('admin/produk', $produk->id) }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
 
-										@include ('template.utils.delete', ['url' => url('admin/adm_produk', $produk->id)])
+										@include ('template.utils.delete', ['url' => url('admin/produk', $produk->id)])
 									</div>	
 
 								</td>
-								<td>{{$produk->kategori}}</td>
+								<td>{{($produk->kategori->nama)}}</td>
 								<td>{{$produk->nama}}</td>
 								<td>{{$produk->harga}}</td>
 								<td>{{$produk->stok}}</td>

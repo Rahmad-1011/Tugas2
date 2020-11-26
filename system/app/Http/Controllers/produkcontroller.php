@@ -2,29 +2,35 @@
 
 namespace App\Http\Controllers;
 use App\Models\Produk;
+use App\Models\User;
+use App\Models\Kategori;
 
 class produkcontroller extends Controller {
 	function index(){
-		$data['list_produk'] = Produk::all();
+		$user = request()->user();
+		$data['list_produk'] = $user->produk;
+		$data['list_kategori'] = Kategori::all();
 		return view('Produk.index', $data);
 	}
 
 	function create(){
-		return view('Produk.create');
+		$data['list_kategori'] = Kategori::all();
+		return view('Produk.create', $data);
 
 	}
 
 	function store(){
 		$produk = new produk;
+		$produk-> id_user = request()->user()->id;
 		$produk-> nama = request('nama');
-		$produk-> kategori = request('kategori');
+		$produk-> id_kategori = request('id_kategori');
 		$produk-> harga = request('harga');
 		$produk-> berat = request('berat');
 		$produk-> stok = request('stok');
 		$produk-> deskripsi = request('deskripsi');
 		$produk-> save();
 
-		return redirect ('admin/adm_produk')-> with ('success', 'Data berhasil ditambahkan');
+		return redirect ('admin/produk')-> with ('success', 'Data berhasil ditambahkan');
 
 	}
 
@@ -41,28 +47,31 @@ class produkcontroller extends Controller {
 
 	function update(Produk $produk){
 		$produk-> nama = request('nama');
-		$produk-> kategori = request('kategori');
+		$produk-> id_kategori = request('id_kategori');
 		$produk-> harga = request('harga');
 		$produk-> berat = request('berat');
 		$produk-> stok = request('stok');
 		$produk-> deskripsi = request('deskripsi');
 		$produk-> save();
 
-		return redirect ('admin/adm_produk')-> with ('success', 'Data berhasil diedit');
+		return redirect ('admin/produk')-> with ('success', 'Data berhasil diedit');
 
 	}
 
 	function destroy(Produk $produk){
 		$produk->delete();
 
-		return redirect ('admin/adm_produk')-> with ('danger', 'Data berhasil dihapus');
+		return redirect ('admin/produk')-> with ('danger', 'Data berhasil dihapus');
 
 	}
 
 	function filter(){
-		$kategori = request ('kategori');
-		$data['list_produk'] = Produk::where('kategori', 'like', "%$kategori%")-> get();
-		$data['kategori'] = $kategori;
+		$kategori = request ('id_kategori');
+		$data['id_kategori'] = $kategori;
+		$data['list_kategori'] = Kategori::all();
+		$data['harga_min'] = $harga_min = request('harga_min');
+		$data['harga_max'] = $harga_max = request('harga_max');
+		$data['list_produk'] = Produk::where('id_kategori', "$kategori")->whereBetween('harga', [$harga_min, $harga_max])->get();
 		return view('Produk.index', $data);
 	}
 }
