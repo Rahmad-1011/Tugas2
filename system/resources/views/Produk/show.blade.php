@@ -11,17 +11,19 @@
 					<h2>{{$produk -> nama}}</h2>
 					<hr>
 					<p>
-						Rp. {{number_format($produk->harga)}}  |	
+						<h3><b>{{($produk->harga)}}</b></h3> <br>
 					
 				
-						Stok : {{($produk->stok)}}  |
+						Stok : {{($produk->stok)}}  | <br>
 					
 				
-						Berat : {{($produk->berat)}}  |
+						Berat : {{($produk->berat)}} Kg | <br>
 
 						Seller : {{($produk->seller->nama)}}  |
 
-						Kategori : {{($produk->kategori->nama)}}  |
+						Kategori : {{($produk->kategori->nama)}}  | <br>
+
+						Tanggal Rilis : {{$produk->created_at->format("d M Y")}}
 						<hr>
 				
 						{!! nl2br ($produk->deskripsi) !!}

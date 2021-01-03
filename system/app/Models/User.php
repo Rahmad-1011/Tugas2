@@ -21,4 +21,10 @@ class User extends Authenticatable
     function produk(){
     	return $this->hasMany(Produk::class , 'id_user');
     }
+    function setPasswordAttribute ($value){
+    	$this->attributes['password'] = bcrypt($value);
+    }
+    function setUsernameAttribute ($value){
+    	$this->attributes['username'] = strtolower($value);
+    }
 }

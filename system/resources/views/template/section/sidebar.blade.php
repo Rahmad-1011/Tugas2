@@ -5,8 +5,13 @@
 @endphp
 
 <nav class="navbar-default navbar-side" role="navigation">
+    
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
+                    <li>
+                        <a href="{{ url('admin/beranda') }}"><h4><i class="fa fa-user fa-fw"></i> {{request()-> user()-> nama}} </h4></a>
+                    </li>
+                    <br>
 
                     <li class="{{checkRouteActive('admin/beranda')}}">
                         <a href="{{ url('admin/beranda') }}"><i class="fa fa-dashboard"></i> Beranda </a>
