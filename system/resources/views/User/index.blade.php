@@ -1,3 +1,5 @@
+@inject('timeservices', 'App\Services\TimeServices')
+
 @extends ('template.base')
 
 @section ('content')
@@ -7,6 +9,9 @@
 		<div class="col-md-12 mt-5">
 			<div class="card">
 				<div class="card-header">
+					<div class="jam" style="float: right;">
+						<b>Jam : {{$timeservices->showTimeNow()}}</b>
+					</div>
 					<h2>
 					Data User
 					</h2>

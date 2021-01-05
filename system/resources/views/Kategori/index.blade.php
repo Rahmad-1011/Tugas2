@@ -1,3 +1,5 @@
+@inject('timeservices', 'App\Services\TimeServices')
+
 @extends ('template.base')
 
 @section ('content')
@@ -7,13 +9,16 @@
 		<div class="col-md-12 mt-5">
 			<div class="card">
 				<div class="card-header">
+					<div class="jam" style="float: right;">
+						<b>Jam : {{$timeservices->showTimeNow()}}</b>
+					</div>
 					<h3>
 					Data Kategori
 					</h3>
 					<hr>
 					<a href="{{ url('admin/kategori/create') }}">
-					<button class="btn btn-primary"> Tambah Kategori
-					</button></a>
+						<button class="btn btn-primary" style="float: right;"> Tambah Kategori
+						</button></a>
 				</div>
 				<div class="card-body">
 					<table class="table table-datatable">

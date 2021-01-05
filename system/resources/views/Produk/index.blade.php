@@ -1,3 +1,5 @@
+@inject('timeservices', 'App\Services\TimeServices')
+
 @extends ('template.base')
 
 @section ('content')
@@ -7,6 +9,9 @@
 		<div class="col-md-12 mt-5">
 			<div class="card">
 				<div class="card-header">
+					<div class="jam" style="float: right;">
+						<b>Jam : {{$timeservices->showTimeNow()}}</b>
+					</div>
 					Filter
 				</div>
 				<div class="card-body">
@@ -34,7 +39,7 @@
 								</div>
 							</div>
 						</div>
-						<button class="btn btn-primary"><i class="fa fa-search"></i>Filter</button>
+						<button class="btn btn-primary" style="float: right;"><i class="fa fa-search"></i>Filter</button>
 					</form>
 				</div>
 			</div>
@@ -46,7 +51,7 @@
 					</h3>
 					<hr>
 					<a href="{{ url('admin/produk/create') }}">
-					<button class="btn btn-primary"> Tambah Data
+					<button class="btn btn-primary" style="float: right; padding: auto;"> Tambah Data
 					</button></a>
 				</div>
 				<div class="card-body">

@@ -2,8 +2,8 @@
 
 @section ('content')
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12 mt-5">
+	<div class="row mt-5">
+		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
 					Detail Produk
@@ -24,11 +24,19 @@
 						Kategori : {{($produk->kategori->nama)}}  | <br>
 
 						Tanggal Rilis : {{$produk->created_at->format("d M Y")}}
-						<hr>
-				
-						{!! nl2br ($produk->deskripsi) !!}
+					</p>
+					<p>
+						<b>Deskripsi</b> <br>
+						{!! nl2br ($produk->deskripsi) !!}	
 					</p>
 				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="card">
+			<div class="card-body">
+				<img style="width: 100%;" src="{{url("public/$produk->foto")}}" class="img-fluid">
 			</div>
 		</div>
 	</div>

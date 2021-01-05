@@ -28,7 +28,10 @@ class produkcontroller extends Controller {
 		$produk-> berat = request('berat');
 		$produk-> stok = request('stok');
 		$produk-> deskripsi = request('deskripsi');
+		$produk->handleUploadFoto();
+
 		$produk-> save();
+
 
 		return redirect ('admin/produk')-> with ('success', 'Data berhasil ditambahkan');
 
@@ -47,18 +50,20 @@ class produkcontroller extends Controller {
 
 	function update(Produk $produk){
 		$produk-> nama = request('nama');
-		$produk-> id_kategori = request('id_kategori');
 		$produk-> harga = request('harga');
 		$produk-> berat = request('berat');
 		$produk-> stok = request('stok');
 		$produk-> deskripsi = request('deskripsi');
+		$produk->handleUploadFoto();
 		$produk-> save();
+
 
 		return redirect ('admin/produk')-> with ('success', 'Data berhasil diedit');
 
 	}
 
 	function destroy(Produk $produk){
+		$produk->handleDeleteFoto();
 		$produk->delete();
 
 		return redirect ('admin/produk')-> with ('danger', 'Data berhasil dihapus');

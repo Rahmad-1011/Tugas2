@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Models;
-use App\Models\User;
-use App\Models\Kategori;
+
+use App\Models\Traits\Attributes\ProdukAttributes;
+use App\Models\Traits\Relations\ProdukRelations;
 
 class Produk extends Model{
+
+	use ProdukAttributes, ProdukRelations;
+
 	protected $table = 'produk';
 
 	protected $casts = [
@@ -12,14 +16,5 @@ class Produk extends Model{
 		'updated_at' => 'datetime',
 		'berat' =>'decimal:2',
 	];
-
-	function seller(){
-		return $this->belongsTo(User::class, 'id_user');
-	}
-	function kategori(){
-		return $this->belongsTo(Kategori::class, 'id_kategori');
-	}
-	function getHargaAttribute(){
-		return "Rp.".number_format($this->attributes['harga']);
-	}
+	
 }

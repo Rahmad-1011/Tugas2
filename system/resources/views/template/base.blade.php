@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{{url('public')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="{{url('public')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 
+    @stack('style')
+
 
 </head>
 
@@ -72,6 +74,8 @@
     <script src="{{url('/public')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="{{url('/public')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="{{url('/public')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+    @stack('script')
     <script>
         $(".table-datatable").DataTable();
     </script>
