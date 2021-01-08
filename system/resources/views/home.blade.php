@@ -122,31 +122,24 @@
 					<!-- section title -->
 					<div class="col-md-12">
 						<div class="section-title">
-							<h3 class="title">Produk Baru</h3>
+							<h3 class="title">Produk</h3>
 						</div>
 					</div>
 					<!-- /section title -->
 
 					<!-- Products tab & slick -->
-					<div class="col-md-12">
-						<div class="row">
-							<div class="products-tabs">
-								<!-- tab -->
-								<div id="tab1" class="tab-pane active">
-									<div class="products-slick" data-nav="#slick-nav-1">
-										<!-- product -->
-										@foreach($list_produk as $produk)
+					<div class="container">
+						<div class="row" style="margin-bottom: 40px;">
+							@foreach($list_produk as $produk)
+							<div class="col-md-3">
 										<div class="product">
 											<div class="product-img">
-												<img src="{{url('/public')}}/img/product01.png" alt="">
-												<div class="product-label">
-													<span class="new">BARU</span>
-												</div>
+												<img style="width: 100%;" src="{{url("public/$produk->foto")}}" class="img-fluid">
 											</div>
 											<div class="product-body">
 												<p class="product-category"><a href="{{url('product', $produk->id)}}">{{ $produk->kategori->nama }}</a></p>
 												<h3 class="product-name"><a href="{{url('product', $produk->id)}}">{{ $produk->nama }}</a></h3>
-												<h4 class="product-price"> Rp. {{ number_format($produk->harga) }}</h4>
+												<h4 class="product-price"> {{$produk->harga}}</h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -165,13 +158,18 @@
 											</div>
 										</div>
 										<!-- /product -->
-										@endforeach
-									</div>
-									<div id="slick-nav-1" class="products-slick-nav"></div>
-								</div>
-								<!-- /tab -->
 							</div>
+										@endforeach
 						</div>
+						<nav aria-label="Page navigation example">
+							<div class="container">
+								<div class="col-md-12" style="text-align: center;">
+  									<ul class="pagination justify-content-center">
+    									{!! $list_produk->links() !!}
+  									</ul>
+								</div>
+							</div>
+						</nav>
 					</div>
 					<!-- Products tab & slick -->
 				</div>

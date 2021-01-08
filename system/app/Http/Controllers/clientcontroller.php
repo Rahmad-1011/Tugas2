@@ -7,7 +7,7 @@ use App\Models\Kategori;
 class clientcontroller extends Controller
 {
 	function home(){
-		$data['list_produk'] = produk::all();
+		$data['list_produk'] = Produk::paginate(12);
 		$data['list_kategori'] = Kategori::all();
 		return view('home', $data);
 	}

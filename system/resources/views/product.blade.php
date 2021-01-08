@@ -28,26 +28,6 @@
 		@include('template.bagan.navigation')
 		<!-- /NAVIGATION -->
 
-		<!-- BREADCRUMB -->
-		<div id="breadcrumb" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="breadcrumb-tree">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Laptop</a></li>
-							<li class="active">Laptop MSI</li>
-						</ul>
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /BREADCRUMB -->
-
 		<!-- SECTION -->
 		<div class="section">
 			<!-- container -->
@@ -55,51 +35,19 @@
 				<!-- row -->
 				<div class="row">
 					<!-- Product main img -->
-					<div class="col-md-5 col-md-push-2">
-						<div id="product-main-img">
-							<div class="product-preview">
-								<img src="{{url('/public')}}/img/product01.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="{{url('/public')}}/img/product03.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="{{url('/public')}}/img/product06.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="{{url('/public')}}/img/product08.png" alt="">
-							</div>
+					<div class="col-md-5">
+						<div id="product-main-img" style="margin-right: 100px;">
+							<img style="width: 100%;" src="{{url("public/$produk->foto")}}" class="img-fluid">
 						</div>
 					</div>
 					<!-- /Product main img -->
 
 					<!-- Product thumb imgs -->
-					<div class="col-md-2  col-md-pull-5">
-						<div id="product-imgs">
-							<div class="product-preview">
-								<img src="{{url('/public')}}/img/product01.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="{{url('/public')}}/img/product03.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="{{url('/public')}}/img/product06.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="{{url('/public')}}/img/product08.png" alt="">
-							</div>
-						</div>
-					</div>
+					
 					<!-- /Product thumb imgs -->
 
 					<!-- Product details -->
-					<div class="col-md-5">
+					<div class="col-md-5" style="margin-left: 150px;">
 						<div class="product-details">
 							<h2 class="product-name">{{ $produk->nama }}</h2>
 							<div>
@@ -113,8 +61,8 @@
 								<a class="review-link" href="#">10 Penilaian | Tambah Penilaian</a>
 							</div>
 							<div>
-								<h3 class="product-price">Rp. {{ number_format($produk->harga) }}</h3>
-								<span class="product-available">Stok : {{ $produk->stok }}  | Berat : {{ $produk->berat }} gr</span>
+								<h3 class="product-price">{{$produk->harga}}</h3>
+								<span class="product-available">Stok : {{ $produk->stok }}  | Berat : {{ $produk->berat }} kg <br> Seller : {{$produk->seller->nama}}</span>
 							</div>
 							
 
@@ -378,132 +326,7 @@
 		<!-- /SECTION -->
 
 		<!-- Section -->
-		<div class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-
-					<div class="col-md-12">
-						<div class="section-title text-center">
-							<h3 class="title">Related Products</h3>
-						</div>
-					</div>
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="{{url('/public')}}/img/product01.png" alt="">
-								<div class="product-label">
-									<span class="sale">-30%</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-category">Laptop</p>
-								<h3 class="product-name"><a href="#">Laptop MSI</a></h3>
-								<h4 class="product-price">Rp.14.000.000 <del class="product-old-price">Rp.20.000.000</del></h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Permintaan</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Perbandingan</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Lihat</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Keranjang</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="{{url('/public')}}/img/product02.png" alt="">
-								<div class="product-label">
-									<span class="new">BARU</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-category">Aksesoris</p>
-								<h3 class="product-name"><a href="#">Headphone Razer</a></h3>
-								<h4 class="product-price">Rp.1.000.000</h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Permintaan</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Perbandingan</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Lihat</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Keranjang</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<div class="clearfix visible-sm visible-xs"></div>
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="{{url('/public')}}/img/product03.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Laptop</p>
-								<h3 class="product-name"><a href="#">MAC</a></h3>
-								<h4 class="product-price">Rp.25.000.000</h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Permintaan</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Perbandingan</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Lihat</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Keranjang</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="{{url('/public')}}/img/product04.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Smartphone</p>
-								<h3 class="product-name"><a href="#">Tablet Advan</a></h3>
-								<h4 class="product-price">Rp.1.000.000</h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Permintaan</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Perbandingan</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Lihat</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Keranjang</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /Section -->
+		
 
 		<!-- FOOTER -->
 		@include('template.bagan.footer')
