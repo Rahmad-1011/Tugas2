@@ -9,23 +9,7 @@
 		<title>TokoKite</title>
 
  		<!-- Google font -->
- 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-
- 		<!-- Bootstrap -->
- 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
-
- 		<!-- Slick -->
- 		<link type="text/css" rel="stylesheet" href="css/slick.css"/>
- 		<link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
-
- 		<!-- nouislider -->
- 		<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
-
- 		<!-- Font Awesome Icon -->
- 		<link rel="stylesheet" href="css/font-awesome.min.css">
-
- 		<!-- Custom stlylesheet -->
- 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+ 		@include('template.bagan.css')
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,10 +36,6 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h3 class="breadcrumb-header">Checkout</h3>
-						<ul class="breadcrumb-tree">
-							<li><a href="#">Home</a></li>
-							<li class="active">Checkout</li>
-						</ul>
 					</div>
 				</div>
 				<!-- /row -->
@@ -71,14 +51,14 @@
 				<!-- row -->
 				<div class="row">
 
-					<div class="col-md-7">
+					<div class="col-md-8">
 						<!-- Billing Details -->
 						<div class="billing-details">
 							<div class="section-title">
-								<h3 class="title">Alamat Tagihan</h3>
+								<h3 class="title">Alamat Pemesanan</h3>
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="first-name" placeholder="Nama Depam">
+								<input class="input" type="text" name="first-name" placeholder="Nama Depan">
 							</div>
 							<div class="form-group">
 								<input class="input" type="text" name="last-name" placeholder="Nama Belakang">
@@ -89,11 +69,37 @@
 							<div class="form-group">
 								<input class="input" type="text" name="address" placeholder="Alamat">
 							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="city" placeholder="Kota">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="country" placeholder="Provinsi">
+							<div class="row">
+								<div class="form-group">
+	              					<label for="">Provinsi</label>
+	                				<select name="" class="form-control select2" onchange="gantiProvinsi(this.value)">
+											<option value="">Pilih Provinsi</option>
+		                				@foreach($list_provinsi as $provinsi)
+		                					<option value="{{$provinsi->id}}">{{$provinsi->nama}}</option>
+		                				@endforeach
+	                				</select>
+	              				</div>
+	              				<div class="form-group">
+	              					<label for="country">Kabupaten</label>
+									<select name="" class="form-control select2" id="kabupaten" onchange="gantiKabupaten(this.value)">
+										<option value="">Pilih Provinsi Terlebih Dahulu</option>
+										<option value="">  </option>
+									</select>
+	              				</div>
+	              				<div class="form-group">
+	              					<label for="country">Kecamatan</label>
+	                				<select name="" class="form-control select2" id="kecamatan" onchange="gantiKecamatan(this.value)">
+										<option value="">Pilih Kabupaten Terlebih Dahulu</option>
+										<option value="">  </option>
+									</select>
+	              				</div>
+	              				<div class="form-group">
+	              					<label for="country">Desa</label>
+	              					<select name="" class="form-control select2" id="desa">
+										<option value="">Pilih Kecamatan Terlebih Dahulu</option>
+										<option value="">  </option>
+									</select>
+	              				</div>
 							</div>
 							<div class="form-group">
 								<input class="input" type="text" name="zip-code" placeholder="Kode Pos">
@@ -101,62 +107,8 @@
 							<div class="form-group">
 								<input class="input" type="tel" name="tel" placeholder="Telepon">
 							</div>
-							<div class="form-group">
-								<div class="input-checkbox">
-									<input type="checkbox" id="create-account">
-									<label for="create-account">
-										<span></span>
-										Anda Yakin?
-									</label>
-									<div class="caption">
-										<p>Dengan mengisi form di atas, maka kami akan menagih pada alamat tersebut.</p>
-										<input class="input" type="password" name="password" placeholder="Masukan Password">
-									</div>
-								</div>
-							</div>
 						</div>
 						<!-- /Billing Details -->
-
-						<!-- Shiping Details -->
-						<div class="shiping-details">
-							<div class="section-title">
-								<h3 class="title">Alamat Pengantaran</h3>
-							</div>
-							<div class="input-checkbox">
-								<input type="checkbox" id="shiping-address">
-								<label for="shiping-address">
-									<span></span>
-									Akan diantarkan pada alamat ini?
-								</label>
-								<div class="caption">
-									<div class="form-group">
-										<input class="input" type="text" name="first-name" placeholder="Nama Depan">
-									</div>
-									<div class="form-group">
-										<input class="input" type="text" name="last-name" placeholder="Nama Belakang">
-									</div>
-									<div class="form-group">
-										<input class="input" type="email" name="email" placeholder="Email">
-									</div>
-									<div class="form-group">
-										<input class="input" type="text" name="address" placeholder="Alamat">
-									</div>
-									<div class="form-group">
-										<input class="input" type="text" name="city" placeholder="Kota">
-									</div>
-									<div class="form-group">
-										<input class="input" type="text" name="country" placeholder="Provinsi">
-									</div>
-									<div class="form-group">
-										<input class="input" type="text" name="zip-code" placeholder="Kode Pos">
-									</div>
-									<div class="form-group">
-										<input class="input" type="tel" name="tel" placeholder="Telepon">
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- /Shiping Details -->
 
 						<!-- Order notes -->
 						<div class="order-notes">
@@ -166,7 +118,7 @@
 					</div>
 
 					<!-- Order Details -->
-					<div class="col-md-5 order-details">
+					<div class="col-md-4 order-details">
 						<div class="section-title text-center">
 							<h3 class="title">Pesananmu</h3>
 						</div>
@@ -177,12 +129,8 @@
 							</div>
 							<div class="order-products">
 								<div class="order-col">
-									<div>1x Laptop MSI</div>
-									<div>Rp.14.000.000</div>
-								</div>
-								<div class="order-col">
-									<div>3x Headphone Razer</div>
-									<div>Rp.1.000.000</div>
+									<div>{{$produk->nama}}</div>
+									<div>{{$produk->harga}}</div>
 								</div>
 							</div>
 							<div class="order-col">
@@ -191,7 +139,7 @@
 							</div>
 							<div class="order-col">
 								<div><strong>TOTAL</strong></div>
-								<div><strong class="order-total">Rp.17.000.000</strong></div>
+								<div><strong class="order-total">{{$produk->harga}}</strong></div>
 							</div>
 						</div>
 						<div class="payment-method">
@@ -248,12 +196,47 @@
 		<!-- /FOOTER -->
 
 		<!-- jQuery Plugins -->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/slick.min.js"></script>
-		<script src="js/nouislider.min.js"></script>
-		<script src="js/jquery.zoom.min.js"></script>
-		<script src="js/main.js"></script>
+		@include('template.bagan.js')
+
 
 	</body>
 </html>
+
+
+@push('script')
+<script>
+	function gantiProvinsi(id){
+		// alert(id); /*untuk melihat id Provinsi*/
+		$.get("api/provinsi/"+id, function(result){
+			result = JSON.parse(result)
+			option = ""
+			for(item of result){
+				option += `<option value="${item.id}">${item.name}</option>`;
+			}
+			$("#kabupaten").html(option)
+		});
+	}
+	function gantiKabupaten(id){
+		// alert(id); untuk melihat id Provinsi
+		$.get("api/kabupaten/"+id, function(result){
+			result = JSON.parse(result)
+			option = ""
+			for(item of result){
+				option += `<option value="${item.id}">${item.name}</option>`;
+			}
+			$("#kecamatan").html(option)
+		});
+	}
+	function gantiKecamatan(id){
+		// alert(id); untuk melihat id Provinsi
+		$.get("api/kecamatan/"+id, function(result){
+			result = JSON.parse(result)
+			option = ""
+			for(item of result){
+				option += `<option value="${item.id}">${item.name}</option>`;
+			}
+			$("#desa").html(option)
+		});
+	}
+</script>
+@endpush

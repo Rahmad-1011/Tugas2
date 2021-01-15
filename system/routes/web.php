@@ -7,6 +7,7 @@ use App\Http\Controllers\produkcontroller;
 use App\Http\Controllers\clientcontroller;
 use App\Http\Controllers\usercontroller;
 use App\Http\Controllers\kategoricontroller;
+use App\Http\Controllers\settingcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,9 @@ Route::get('home', [clientcontroller::class, 'home']);
 Route::post('home/filter', [clientcontroller::class, 'filter']);
 
 Route::get('product/{produk}', [clientcontroller::class, 'show']);
+Route::get('checkout/{produk}', [clientcontroller::class, 'checkout']);
 
-Route::get('/checkout', function () {
-	return view('checkout');
-});
+
 
 Route::get('/register', function () {
 	return view('register');
@@ -42,6 +42,7 @@ Route::get('/register', function () {
 Route::prefix('admin')->group(function(){
 	//beranda
 	Route::get('beranda', [homecontroller::class, 'showBeranda']);
+	Route::get('beranda/{status}', [homecontroller::class, 'showBeranda']);
 	//kategori
 	Route::resource('kategori', kategoricontroller::class);
 	//produk
@@ -49,6 +50,9 @@ Route::prefix('admin')->group(function(){
 	Route::post('produk/filter', [produkcontroller::class, 'filter']);
 	//user 
 	Route::resource('user', usercontroller::class);
+
+	Route::get('setting', [settingcontroller::class, 'index']);
+	Route::post('setting', [settingcontroller::class, 'store']);
 });
 
 
@@ -63,9 +67,20 @@ Route::get('/login_adm', [authcontroller::class, 'showLogin'])->name('login');
 
 Route::post('/login_adm', [authcontroller::class, 'LoginProcess']);
 
+// Register Admin Master
 Route::get('/register_adm', [authcontroller::class, 'create']);
-
 Route::post('/register_adm', [authcontroller::class, 'Register']);
+// end
+
+// Register Penjual
+Route::get('/register_penjual', [authcontroller::class, 'createPenjual']);
+Route::post('/register_penjual', [authcontroller::class, 'RegisterPenjual']);
+// end
+
+// Register Pembeli
+Route::get('/register_pembeli', [authcontroller::class, 'createPembeli']);
+Route::post('/register_pembeli', [authcontroller::class, 'RegisterPembeli']);
+// end
 
 Route::get('/logout_adm', [authcontroller::class, 'destory']);
 

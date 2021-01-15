@@ -15,29 +15,30 @@ class produkresource extends Controller
      */
     public function index()
     {
-        $list_produk = Produk::all();
-        return $list_produk;
+        return Produk::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function store()
     {
-        //
-    }
+        if(request('nama') && request('harga') && request('stok') && request('berat') && request('deskripsi')){
+            $produk = new Produk;
+            $produk->nama = request('nama');
+            $produk->harga = request('harga');
+            $produk->stok = request('stok');
+            $produk->berat = request('berat');
+            $produk->deskripsi = request('deskripsi');
+            $produk->save();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+            return collect([
+                'respon' => 69,
+                'data' => $produk
+            ]);
+        } else{
+            return collect([
+                'respon' => 500,
+                'massage' => "Ada field yang kosong"
+            ]);
+        }
     }
 
     /**
@@ -48,40 +49,58 @@ class produkresource extends Controller
      */
     public function show($id)
     {
-        //
+        $produk = Produk::find($id);
+        if($produk){
+            return collect([
+                'status' => 69,
+                'data' => $produk
+            ]);
+        } else{
+            return collect([
+                'respon' => 500,
+                'massage' => "Produk Tidak Ditemukan"
+            ]);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+   
+    public function update($id)
     {
-        //
+        $produk = Produk::find($id);
+        if($produk){
+            $produk->nama = request('nama') ?? $produk->nama;
+            $produk->harga = request('harga') ?? $produk->harga;
+            $produk->stok = request('stok') ?? $produk->stok;
+            $produk->berat = request('berat') ?? $produk->berat;
+            $produk->deskripsi = request('deskripsi') ?? $produk->deskripsi;
+            $produk->save();
+
+            return collect([
+                'status' => 69,
+                'data' => $produk
+            ]);
+        } else{
+            return collect([
+                'respon' => 500,
+                'massage' => "Produk Tidak Ditemukan"
+            ]);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $produk = Produk::find($id);
+        if($produk){
+            $produk->delete();
+            return collect([
+                'status' => 69,
+                'data' => "Produk berhasil di Hapus"
+            ]);
+        } else{
+            return collect([
+                'respon' => 500,
+                'massage' => "Produk Tidak Ditemukan"
+            ]);
+        }
     }
 }

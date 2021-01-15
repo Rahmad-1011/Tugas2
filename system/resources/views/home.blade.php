@@ -40,6 +40,7 @@
 						<div class="form-group">
 							<label for="" class="control-label"> Kategori </label>
 							<select name="id_kategori" class="form-control">
+								<option>Pilih Kategori</option>
 							@foreach($list_kategori as $kategori)
 								<option value="{{$kategori->id}}">{{$kategori->nama}}</option>
 							@endforeach

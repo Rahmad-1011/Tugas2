@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\UserDetail;
+use App\Http\Requests\User\StoreRequest;
 
 class usercontroller extends Controller {
 	function index(){
@@ -15,7 +16,7 @@ class usercontroller extends Controller {
 
 	}
 
-	function store(){
+	function store(StoreRequest $request){
 		$user = new user;
 		$user-> nama = request('nama');
 		$user-> username = request('username');

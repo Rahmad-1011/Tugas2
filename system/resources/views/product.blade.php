@@ -62,7 +62,7 @@
 							</div>
 							<div>
 								<h3 class="product-price">{{$produk->harga}}</h3>
-								<span class="product-available">Stok : {{ $produk->stok }}  | Berat : {{ $produk->berat }} kg <br> Seller : {{$produk->seller->nama}}</span>
+								<span class="product-available">Stok : {{ $produk->stok }}  | Berat : {{ $produk->berat }} kg <br></span>
 							</div>
 							
 
@@ -90,7 +90,9 @@
 										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Keranjang</button>
+								<a href="{{url('checkout', $produk->id)}}">
+								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Pesan Sekarang</button>
+								</a>
 							</div>
 
 							<ul class="product-btns">
@@ -100,7 +102,7 @@
 
 							<ul class="product-links">
 								<li>Kategori:</li>
-								<li><a href="#">Laptop</a></li>
+								<li><a href="#">{{$produk->kategori->nama}}</a></li>
 							</ul>
 
 							<ul class="product-links">

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\produkresource;
+use App\Http\Controllers\API\alamatresource;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,6 @@ use App\Http\Controllers\API\produkresource;
 */
 
 Route::resource('produk', produkresource::class);
+
+Route::get('provinsi/{id}', [alamatresource::class, 'getKabupaten']);
+Route::get('kabupaten/{id}', [alamatresource::class, 'getKecamatan']);

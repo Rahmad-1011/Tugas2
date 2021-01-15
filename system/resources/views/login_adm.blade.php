@@ -47,6 +47,13 @@
             </div>
           </div>
         </div>
+        <div class="input-group mb-3">
+          <select name="login_as" class="form-control">
+            <option value="1"> Pembeli </option>
+            <option value="2"> Penjual </option>
+            <option value="3"> Master Admin </option>
+          </select>
+        </div>
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
@@ -67,7 +74,9 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-0">
-        <a href="{{url('register_adm')}}" class="text-center">Register a new membership</a>
+        <a href="{{url('register_adm')}}" class="text-center">Register a new master admin</a> <br>
+        <a href="{{url('register_penjual')}}" class="text-center">Register a new Seller</a> <br>
+        <a href="{{url('register_pembeli')}}" class="text-center">Register a new Customer</a> <br>
       </p>
     </div>
     <!-- /.login-card-body -->

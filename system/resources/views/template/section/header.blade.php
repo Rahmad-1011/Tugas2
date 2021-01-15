@@ -18,7 +18,7 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Profil Admin </a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Pengaturan </a>
+                        <li><a href="{{url('admin/setting')}}"><i class="fa fa-gear fa-fw"></i> Pengaturan </a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="{{ url('/logout_adm') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>

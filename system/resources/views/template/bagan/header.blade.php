@@ -8,7 +8,12 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> Ketapang, Kalimantan Barat</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href="{{ url('/logout_adm') }}"><i class="fa fa-user"></i>Log Out</a></li>
+						<h5 style="color: #ffffff;">
+						@if(Auth::guard('pembeli')->check())
+                            {{Auth::guard('pembeli')->user()->nama}}
+                        @endif
+						</h5>
+						<li><a href="{{ url('/logout_adm') }} "><i class="fa fa-user"></i>Log Out</a></li>
 					</ul>
 				</div>
 			</div>

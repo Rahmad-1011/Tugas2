@@ -9,7 +9,7 @@
 <br>
 
 <h1>
-	{{request()-> user()-> nama}}
+	HIII
 </h1>
 
 

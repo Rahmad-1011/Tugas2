@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Produk;
 use App\Models\User;
 use App\Models\Kategori;
+use App\Models\Penjual;
 
 class produkcontroller extends Controller {
 	function index(){
