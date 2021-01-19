@@ -12,13 +12,13 @@
                         <a href="{{ url('admin/beranda') }}"><h4><i class="fa fa-user fa-fw"></i>
                             @if(Auth::check())
                             {{request()->user()->nama}}
-                            <br> <h3>Master Admin</h3>
+                            <br> <h3>Penjual</h3>
                             @elseif(Auth::guard('pembeli')->check())
                             {{Auth::guard('pembeli')->user()->nama}}
                             <br> <h3>Pembeli</h3>
-                            @elseif(Auth::guard('penjual')->check())
-                            {{Auth::guard('penjual')->user()->nama}}
-                            <br> <h3>Penjual</h3>
+                            @elseif(Auth::guard('admin')->check())
+                            {{Auth::guard('admin')->user()->nama}}
+                            <br> <h3>Master Admin</h3>
                             @else
                             Silahkan Login
                             @endif

@@ -16,12 +16,14 @@ class clientcontroller extends Controller
 
 	function show(Produk $produk){
 		$data['produk'] = $produk;
+		$data['list_kategori'] = Kategori::all();
 		return view('product', $data);
 	}
 
 	function checkout(Produk $produk){
 		$data['produk'] = $produk;
 		$data['list_provinsi'] = Provinsi::all();
+		$data['list_kategori'] = Kategori::all();
 		return view('checkout', $data);
 	}
 
@@ -31,7 +33,7 @@ class clientcontroller extends Controller
 		$data['list_kategori'] = Kategori::all();
 		$data['harga_min'] = $harga_min = request('harga_min');
 		$data['harga_max'] = $harga_max = request('harga_max');
-		$data['list_produk'] = Produk::where('id_kategori', "$kategori")->get();
+		$data['list_produk'] = Produk::where('id_kategori', "$kategori")->paginate(12);
 		return view('home', $data);
 	}
 	function destory(){

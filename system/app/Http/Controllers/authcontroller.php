@@ -5,6 +5,7 @@ use Auth;
 use App\Models\User;
 use App\Models\Pembeli;
 use App\Models\Penjual;
+use App\Models\Admin;
 
 class authcontroller extends Controller
 {
@@ -57,19 +58,19 @@ class authcontroller extends Controller
 
 		if(request('login_as')==1){
 			if(Auth::guard('pembeli')->attempt(['email' => request('email'), 'password' => request('password')])){
-				return redirect('home')-> with('success', 'Login Berhasil');
+				return redirect('pembeli/home')-> with('success', 'Login Berhasil');
 			}else{
 				return back()-> with('danger', 'Silahkan cek email dan password anda');
 			}
 
 		} elseif(request('login_as')==2){
-			if(Auth::guard('penjual')->attempt(['email' => request('email'), 'password' => request('password')])){
-				return redirect('admin/beranda/penjual')-> with('success', 'Login Berhasil');
+			if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
+			return redirect('penjual/beranda')-> with('success', 'Login Berhasil');
 			}else{
 				return back()-> with('danger', 'Silahkan cek email dan password anda');
 			}
 		}else{
-			if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
+			if(Auth::guard('admin')->attempt(['email' => request('email'), 'password' => request('password')])){
 			return redirect('admin/beranda')-> with('success', 'Login Berhasil');
 			}else{
 				return back()-> with('danger', 'Silahkan cek email dan password anda');
@@ -78,23 +79,23 @@ class authcontroller extends Controller
 	}
 
 	function Register(){
+		$admin = new admin;
+		$admin-> nama = request('nama');
+		$admin-> username = request('username');
+		$admin-> email = request('email');
+		$admin-> password = bcrypt(request('password'));
+		$admin-> save();
+
+		return redirect ('/login_adm')-> with ('success', 'Registrasi berhasil');
+	}
+
+	function RegisterPenjual(){
 		$user = new user;
 		$user-> nama = request('nama');
 		$user-> username = request('username');
 		$user-> email = request('email');
 		$user-> password = bcrypt(request('password'));
 		$user-> save();
-
-		return redirect ('/login_adm')-> with ('success', 'Registrasi berhasil');
-	}
-
-	function RegisterPenjual(){
-		$penjual = new penjual;
-		$penjual-> nama = request('nama');
-		$penjual-> username = request('username');
-		$penjual-> email = request('email');
-		$penjual-> password = bcrypt(request('password'));
-		$penjual-> save();
 
 		return redirect ('/login_adm')-> with ('success', 'Registrasi berhasil');
 	}
@@ -113,7 +114,7 @@ class authcontroller extends Controller
 	function destory(){
 		Auth::logout();
 		Auth::guard('pembeli')->logout();
-		Auth::guard('penjual')->logout();
+		Auth::guard('admin')->logout();
 		return view('login_adm');
 
 	}

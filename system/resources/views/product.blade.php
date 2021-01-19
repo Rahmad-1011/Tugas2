@@ -90,7 +90,7 @@
 										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<a href="{{url('checkout', $produk->id)}}">
+								<a href="{{url('pembeli/checkout', $produk->id)}}">
 								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Pesan Sekarang</button>
 								</a>
 							</div>

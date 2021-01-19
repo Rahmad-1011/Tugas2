@@ -1,6 +1,6 @@
 @inject('timeservices', 'App\Services\TimeServices')
 
-@extends ('template.base')
+@extends ('template.penjual.base')
 
 @section ('content')
 	
@@ -15,7 +15,7 @@
 					Filter
 				</div>
 				<div class="card-body">
-					<form action="{{url('admin/produk/filter')}}" method="post">
+					<form action="{{url('penjual/produk/filter')}}" method="post">
 						@csrf
 						<div class="form-group">
 							<label for="" class="control-label"> Kategori </label>
@@ -50,7 +50,7 @@
 					Data Produk
 					</h3>
 					<hr>
-					<a href="{{ url('admin/produk/create') }}">
+					<a href="{{ url('penjual/produk/create') }}">
 					<button class="btn btn-primary" style="float: right; padding: auto;"> Tambah Data
 					</button></a>
 				</div>
@@ -72,10 +72,7 @@
 									<div class="btn btn-group">
 
 										<a href="{{ url('admin/produk', $produk->id) }}" class="btn btn-primary"><i class="fa fa-info"></i></a>
-
-										<a href="{{ url('admin/produk', $produk->id) }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-
-										@include ('template.utils.delete', ['url' => url('admin/produk', $produk->id)])
+										
 									</div>	
 
 								</td>

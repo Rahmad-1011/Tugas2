@@ -74,7 +74,6 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-0">
-        <a href="{{url('register_adm')}}" class="text-center">Register a new master admin</a> <br>
         <a href="{{url('register_penjual')}}" class="text-center">Register a new Seller</a> <br>
         <a href="{{url('register_pembeli')}}" class="text-center">Register a new Customer</a> <br>
       </p>

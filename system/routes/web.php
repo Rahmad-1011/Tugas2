@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homecontroller;
 use App\Http\Controllers\authcontroller;
 use App\Http\Controllers\produkcontroller;
+use App\Http\Controllers\produkadmincontroller;
 use App\Http\Controllers\clientcontroller;
 use App\Http\Controllers\usercontroller;
 use App\Http\Controllers\kategoricontroller;
+use App\Http\Controllers\kategoriadmincontroller;
 use App\Http\Controllers\settingcontroller;
 
 /*
@@ -20,41 +22,48 @@ use App\Http\Controllers\settingcontroller;
 |
 */
 
-Route::get('/', [clientcontroller::class, 'home']);
 
-Route::get('/login', function () {
-	return view('login');
+
+Route::get('/', function () {
+	return view('login_adm');
 });
-
+Route::prefix('pembeli')->group(function(){
 Route::get('home', [clientcontroller::class, 'home']);
 Route::post('home/filter', [clientcontroller::class, 'filter']);
 
+Route::get('kategori/{kategori}', [clientcontroller::class, 'kategori']);
+
 Route::get('product/{produk}', [clientcontroller::class, 'show']);
 Route::get('checkout/{produk}', [clientcontroller::class, 'checkout']);
-
-
-
-Route::get('/register', function () {
-	return view('register');
 });
+
 
 
 Route::prefix('admin')->group(function(){
 	//beranda
 	Route::get('beranda', [homecontroller::class, 'showBeranda']);
-	Route::get('beranda/{status}', [homecontroller::class, 'showBeranda']);
+	//kategori
+	Route::resource('kategori', kategoriadmincontroller::class);
+	//produk
+	Route::resource('produk', produkadmincontroller::class);
+	Route::post('produk/filter', [produkadmincontroller::class, 'filter']);
+	//user 
+	Route::resource('user', usercontroller::class);
+});
+
+Route::prefix('penjual')->group(function(){
+	//beranda
+	Route::get('beranda', [homecontroller::class, 'showBerandaPenjual']);
 	//kategori
 	Route::resource('kategori', kategoricontroller::class);
 	//produk
 	Route::resource('produk', produkcontroller::class);
 	Route::post('produk/filter', [produkcontroller::class, 'filter']);
-	//user 
-	Route::resource('user', usercontroller::class);
+
+});
 
 	Route::get('setting', [settingcontroller::class, 'index']);
 	Route::post('setting', [settingcontroller::class, 'store']);
-});
-
 
 
 

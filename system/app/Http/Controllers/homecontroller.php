@@ -7,12 +7,13 @@ class homecontroller extends Controller
 {
 	
 	function showBeranda(){
-		return view('beranda');
+		return view('Admin.beranda');
 	}
 
-	function showAdm_promo(){
-		return view('adm_promo');
+	function showBerandaPenjual(){
+		return view('Penjual.beranda');
 	}
+
 	
 
 }

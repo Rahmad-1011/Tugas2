@@ -44,9 +44,9 @@ return [
             'driver' => 'session',
             'provider' => 'pembeli',
         ],
-        'penjual' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'penjual',
+            'provider' => 'admin',
         ],
 
         'api' => [
@@ -78,9 +78,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'penjual' => [
+        'admin' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Penjual::class,
+            'model' => App\Models\Admin::class,
         ],
         'pembeli' => [
             'driver' => 'eloquent',

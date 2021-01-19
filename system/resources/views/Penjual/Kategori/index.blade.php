@@ -1,6 +1,6 @@
 @inject('timeservices', 'App\Services\TimeServices')
 
-@extends ('template.base')
+@extends ('template.penjual.base')
 
 @section ('content')
 	
@@ -16,7 +16,7 @@
 					Data Kategori
 					</h3>
 					<hr>
-					<a href="{{ url('admin/kategori/create') }}">
+					<a href="{{ url('penjual/kategori/create') }}">
 						<button class="btn btn-primary" style="float: right;"> Tambah Kategori
 						</button></a>
 				</div>
@@ -32,14 +32,14 @@
 							@foreach($list_kategori as $kategori)
 							<tr>
 								<td>{{$loop->iteration}}</td>
-								<td>
+								<td>	
 									<div class="btn btn-group">
 
-										<a href="{{ url('admin/kategori', $kategori->id) }}" class="btn btn-primary"><i class="fa fa-info"></i></a>
+										<a href="{{ url('penjual/kategori', $kategori->id) }}" class="btn btn-primary"><i class="fa fa-info"></i></a>
 
-										<a href="{{ url('admin/kategori', $kategori->id) }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+										<a href="{{ url('penjual/kategori', $kategori->id) }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
 
-										@include ('template.utils.delete', ['url' => url('admin/kategori', $kategori->id)])
+										@include ('template.utils.delete', ['url' => url('penjual/kategori', $kategori->id)])
 									</div>	
 
 								</td>
